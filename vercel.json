@@ -1,8 +1,8 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "outputDirectory": ".",
+  "outputDirectory": "public",
   "rewrites": [
-    { "source": "/", "destination": "/template/index.html" }
+    { "source": "/", "destination": "/index.html" }
   ]
 }

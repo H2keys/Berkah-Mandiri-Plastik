@@ -21,6 +21,7 @@ node_modules/
 .DS_Store
 
 # Build
+public/
 dist/
 build/
 
