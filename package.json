@@ -1,0 +1,28 @@
+{
+  "name": "berkah-mandiri-plastik",
+  "version": "1.0.0",
+  "description": "Website promosi produk plastik dan layanan sablon custom Berkah Mandiri Plastik",
+  "main": "frontend/index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "plastik",
+    "gelas plastik",
+    "cup plastik",
+    "sablon custom",
+    "kemasan plastik",
+    "berkah mandiri"
+  ],
+  "author": "Berkah Mandiri Plastik",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/berkah-mandiri-plastik.git"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
