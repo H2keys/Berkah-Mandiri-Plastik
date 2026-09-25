@@ -24,14 +24,15 @@ Website promosi produk plastik dan layanan sablon custom Berkah Mandiri Plastik.
 
 ```
 berkah-mandiri-plastik/
-├── frontend/
-│   ├── img/             # Aset gambar produk dan logo
-│   ├── sablon-img/      # Aset showcase sablon cup
-│   ├── index.html      # Markup halaman
+├── template/
+│   └── index.html       # Markup halaman
+├── static/
 │   ├── css/
 │   │   └── styles.css   # Style dan layout UI/UX
-│   └── js/
-│       └── app.js       # Interaksi frontend
+│   ├── js/
+│   │   └── app.js       # Interaksi frontend
+│   ├── img/             # Aset gambar produk dan logo
+│   └── sablon-img/      # Aset showcase sablon cup
 ├── api/
 │   └── health.js        # Endpoint health check Vercel
 ├── vercel.json         # Konfigurasi Vercel
@@ -41,13 +42,14 @@ berkah-mandiri-plastik/
 
 ## Menjalankan Lokal
 
-Jalankan frontend dari root project:
+Jalankan server lokal dari root project:
 
 ```bash
 npm run dev
 ```
 
-Frontend tersedia di `http://localhost:3000/frontend/`.
+Website tersedia di `http://localhost:3000/template/`.
+Saat deploy ke Vercel, halaman utama tersedia langsung di URL root karena diatur oleh `vercel.json`.
 Endpoint serverless tersedia melalui `/api/health` setelah deployment di Vercel.
 
 ## 🚀 Panduan Deployment ke Vercel
@@ -115,9 +117,9 @@ Endpoint serverless tersedia melalui `/api/health` setelah deployment di Vercel.
 2. Di halaman dashboard, scroll ke bawah
 3. Cari section "Upload" atau "Drag and drop"
 4. Upload semua file:
-   - frontend/
+   - template/
+   - static/
    - api/
-   - frontend/
    - vercel.json
 
 ## 🔧 Cara Melakukan Update
@@ -148,7 +150,7 @@ Endpoint serverless tersedia melalui `/api/health` setelah deployment di Vercel.
 ## 📝 Panduan Edit Konten Website
 
 ### Edit Nomor WhatsApp
-Cari `082118145331` di dalam `frontend/index.html` dan ganti dengan nomor Anda.
+Cari `082118145331` di dalam `template/index.html` dan ganti dengan nomor Anda.
 
 ### Edit Produk
 Setiap produk terletak di section "Koleksi Produk Kami". Edit struktur:
@@ -194,7 +196,7 @@ Cari section `:root` di bagian CSS dan ubah warna:
 
 Untuk menambahkan gambar asli di product card:
 
-1. Simpan gambar di folder `frontend/img/`
+1. Simpan gambar di folder `static/img/`
 2. Ubah struktur product-image dari:
 ```html
 <div class="product-image">
@@ -206,7 +208,7 @@ Untuk menambahkan gambar asli di product card:
 Menjadi:
 ```html
 <div class="product-image">
-   <img src="img/nama-gambar.jpg" alt="Gelas Injection 14 OZ" style="width: 100%; height: 100%; object-fit: cover;">
+   <img src="/static/img/nama-gambar.jpg" alt="Gelas Injection 14 OZ" style="width: 100%; height: 100%; object-fit: cover;">
     <span class="product-number">01</span>
 </div>
 ```

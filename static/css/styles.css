@@ -137,7 +137,7 @@
         .hero {
             margin-top: 70px;
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 48%, rgba(255, 255, 255, 0.3) 100%),
-                url('../img/latar.jpg') center / cover no-repeat;
+                url('/static/img/latar.jpg') center / cover no-repeat;
             color: var(--primary);
             padding: 96px 2rem;
             text-align: left;
@@ -257,7 +257,7 @@
             overflow: hidden;
             color: var(--primary);
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 48%, rgba(255, 255, 255, 0.3) 100%),
-                url('../img/latar.jpg') center / cover no-repeat;
+                url('/static/img/latar.jpg') center / cover no-repeat;
         }
 
         .about-service-content {
