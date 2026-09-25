@@ -23,6 +23,6 @@
     "url": "https://github.com/yourusername/berkah-mandiri-plastik.git"
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   }
 }
