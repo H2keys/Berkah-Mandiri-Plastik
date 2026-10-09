@@ -96,8 +96,8 @@ Endpoint serverless tersedia melalui `/api/health` setelah deployment di Vercel.
 6. Konfigurasi project:
    - Framework Preset: **Other**
    - Root Directory: `.`
-   - Build Command: (kosongkan)
-   - Output Directory: (kosongkan)
+   - Build Command: `npm run build` (sudah ditetapkan di `vercel.json`)
+   - Output Directory: `public` (sudah ditetapkan di `vercel.json`)
 7. Klik "Deploy"
 8. Tunggu hingga deployment selesai
 9. Vercel akan memberikan URL publik (misal: https://berkah-mandiri-plastik.vercel.app)

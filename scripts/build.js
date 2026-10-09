@@ -12,5 +12,7 @@ fs.cpSync(
     path.join(outputDirectory, 'static'),
     { recursive: true }
 );
+fs.copyFileSync(path.join(projectRoot, 'robots.txt'), path.join(outputDirectory, 'robots.txt'));
+fs.copyFileSync(path.join(projectRoot, 'sitemap.xml'), path.join(outputDirectory, 'sitemap.xml'));
 
 console.log('Static site copied to public/');

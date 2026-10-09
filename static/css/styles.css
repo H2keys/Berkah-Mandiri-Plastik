@@ -119,6 +119,33 @@
             transform: translateY(0) scale(1);
         }
 
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            transform: translateY(-160%);
+            border-radius: 6px;
+            background: #ffffff;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -131,49 +158,6 @@
             .logo {
                 font-size: 1.2rem;
             }
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 70px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 48%, rgba(255, 255, 255, 0.3) 100%),
-                url('/static/img/latar.jpg') center / cover no-repeat;
-            color: var(--primary);
-            padding: 96px 2rem;
-            text-align: left;
-            min-height: 560px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            width: 100%;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero .hero-kicker {
-            margin-bottom: 0.8rem;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 680px;
-            color: var(--dark-gray);
-            opacity: 0.9;
         }
 
         .hero-cta {
@@ -217,29 +201,6 @@
         }
 
         @media (max-width: 768px) {
-            .hero {
-                margin-top: 88px;
-                padding: 56px 1rem 48px;
-                min-height: 520px;
-                align-items: flex-start;
-            }
-
-            .hero-content {
-                max-width: 620px;
-            }
-
-            .hero-kicker {
-                font-size: 0.75rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
             .hero-cta {
                 justify-content: flex-start;
             }
@@ -257,7 +218,7 @@
             overflow: hidden;
             color: var(--primary);
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 48%, rgba(255, 255, 255, 0.3) 100%),
-                url('/static/img/latar.jpg') center / cover no-repeat;
+                url('/static/img/latar.webp') center / cover no-repeat;
         }
 
         .about-service-content {
@@ -300,7 +261,7 @@
             text-transform: uppercase;
         }
 
-        .about-service h2 {
+        .about-service h1 {
             max-width: 680px;
             margin: 0 auto 1.25rem;
             color: var(--primary);
@@ -338,7 +299,7 @@
                 font-size: 0.75rem;
             }
 
-            .about-service h2 {
+            .about-service h1 {
                 font-size: 2rem;
             }
 
@@ -587,18 +548,6 @@
             }
         }
 
-        /* Products Section Old */
-        .products {
-            padding: 88px 2rem;
-            background: var(--section-bg);
-        }
-
-        .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-
         .section-title {
             font-size: 3.5rem;
             font-weight: 700;
@@ -608,106 +557,6 @@
             color: #1d1d1f;
         }
 
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: var(--secondary);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: var(--soft-shadow);
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 250px;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-number {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: var(--accent);
-            color: var(--secondary);
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .product-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-content h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .product-content p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .product-specs {
-            background: var(--section-bg);
-            padding: 1rem;
-            border-radius: 50px;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            color: #555;
-        }
-
-        .product-specs li {
-            margin-bottom: 0.3rem;
-        }
-
-        .product-cta {
-            background: var(--accent);
-            color: var(--secondary);
-            padding: 10px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .product-cta:hover {
-            background: #0077ed;
-            transform: scale(1.02);
-        }
 
         /* Why Choose Us */
         .why-choose-us {
@@ -907,7 +756,7 @@
             justify-content: space-between;
             gap: 12px;
             padding: 11px 14px;
-            border-radius: 7px;
+            border-radius: 50px;
             background: var(--accent);
             color: #ffffff;
             font-size: 0.84rem;
@@ -954,18 +803,31 @@
         }
 
         .carousel-dot {
-            width: 7px;
-            height: 7px;
+            position: relative;
+            display: grid;
+            flex: 0 0 24px;
+            place-items: center;
+            width: 24px;
+            height: 24px;
             padding: 0;
             border: 0;
             border-radius: 50%;
-            background: #cbd5e1;
+            background: transparent;
             cursor: pointer;
+        }
+
+        .carousel-dot::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            content: '';
             transition: width 0.25s ease, border-radius 0.25s ease, background 0.25s ease;
         }
 
-        .carousel-dot.is-active {
+        .carousel-dot.is-active::before {
             width: 24px;
+            height: 7px;
             border-radius: 999px;
             background: var(--accent);
         }
@@ -996,7 +858,7 @@
         }
 
         .contact-info a {
-            color: var(--accent);
+            color: #75bfff;
             text-decoration: none;
             font-weight: 600;
         }
@@ -1027,13 +889,18 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-weight: bold;
-            color: white;
-            font-size: 1.5rem;
+            color: #ffffff;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             z-index: 99;
             transition: all 0.3s;
             animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn svg {
+            display: block;
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
         }
 
         .whatsapp-btn:hover {
@@ -1050,18 +917,6 @@
 
             50% {
                 box-shadow: 0 5px 30px rgba(37, 211, 102, 0.6);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -1107,19 +962,6 @@
             }
         }
 
-        /* Image Hover & Animations */
-        .product-image {
-            overflow: hidden;
-        }
-
-        .product-image img {
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.1);
-        }
-
         /* Scroll Reveal */
         .reveal {
             opacity: 0;
@@ -1130,4 +972,23 @@
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .about-service-content > *,
+            .reveal,
+            .blur-reveal {
+                opacity: 1;
+                filter: none;
+                transform: none;
+            }
         }

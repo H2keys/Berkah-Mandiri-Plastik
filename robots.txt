@@ -1,12 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: 
-
-Sitemap: /sitemap.xml
-
-# Specific rules for crawlers
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
+Sitemap: https://berkah-mandiri-plastik-zeta.vercel.app/sitemap.xml
