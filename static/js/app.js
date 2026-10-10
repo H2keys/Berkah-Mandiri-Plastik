@@ -5,6 +5,14 @@ const mobileNavPanel = document.querySelector('[data-mobile-nav-panel]');
 const root = document.documentElement;
 let activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light';
 
+const syncScrollBarGap = () => {
+    const scrollbarGap = window.innerWidth - document.documentElement.clientWidth;
+    root.style.setProperty('--scrollbar-gap', `${scrollbarGap}px`);
+};
+
+syncScrollBarGap();
+window.addEventListener('resize', syncScrollBarGap, { passive: true });
+
 const closeMobileNav = () => {
     if (!navMenuToggle || !mobileNavPanel) return;
     navMenuToggle.classList.remove('is-open');
@@ -117,10 +125,26 @@ themeToggle.addEventListener('click', () => {
         const navLinks = document.querySelectorAll('.nav-links a');
         let scrollUpdatePending = false;
         let navigationTargetId = null;
+        let lastScrollY = window.scrollY;
 
         const updateScrollState = () => {
             scrollUpdatePending = false;
-            nav.classList.toggle('scrolled', window.scrollY > 50);
+            const currentScrollY = window.scrollY;
+            const isScrollingDown = currentScrollY > lastScrollY + 8;
+            const isScrollingUp = currentScrollY < lastScrollY - 8;
+
+            if (navMenuToggle && navMenuToggle.classList.contains('is-open')) {
+                nav.classList.remove('nav-hidden');
+            } else if (currentScrollY <= 8) {
+                nav.classList.remove('nav-hidden');
+            } else if (isScrollingDown) {
+                nav.classList.add('nav-hidden');
+            } else if (isScrollingUp) {
+                nav.classList.remove('nav-hidden');
+            }
+
+            nav.classList.toggle('scrolled', currentScrollY > 50);
+            lastScrollY = currentScrollY;
 
             let current = '';
             if (navigationTargetId) {
