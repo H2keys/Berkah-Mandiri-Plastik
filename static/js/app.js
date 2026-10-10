@@ -1,4 +1,60 @@
 ﻿const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const themeToggle = document.querySelector('[data-theme-toggle]');
+const root = document.documentElement;
+let activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light';
+
+const syncThemeToggle = () => {
+    const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+    const label = `Aktifkan mode ${nextTheme === 'dark' ? 'gelap' : 'terang'}`;
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
+    themeToggle.setAttribute('aria-pressed', String(activeTheme === 'dark'));
+};
+
+const applyTheme = theme => {
+    activeTheme = theme;
+    root.dataset.theme = theme;
+    try {
+        localStorage.setItem('bmp-theme', theme);
+    } catch { }
+    syncThemeToggle();
+};
+
+syncThemeToggle();
+
+themeToggle.addEventListener('click', () => {
+    const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+    if (prefersReducedMotion || typeof document.startViewTransition !== 'function') {
+        root.classList.add('theme-switching');
+        applyTheme(nextTheme);
+        window.setTimeout(() => root.classList.remove('theme-switching'), 500);
+        return;
+    }
+
+    const buttonBounds = themeToggle.getBoundingClientRect();
+    const originX = buttonBounds.left + buttonBounds.width / 2;
+    const originY = buttonBounds.top + buttonBounds.height / 2;
+    const transition = document.startViewTransition(() => applyTheme(nextTheme));
+
+    transition.ready.then(() => {
+        const radius = Math.max(
+            Math.hypot(originX, originY),
+            Math.hypot(window.innerWidth - originX, originY),
+            Math.hypot(originX, window.innerHeight - originY),
+            Math.hypot(window.innerWidth - originX, window.innerHeight - originY)
+        );
+        root.animate({
+            clipPath: [`circle(0px at ${originX}px ${originY}px)`, `circle(${radius}px at ${originX}px ${originY}px)`]
+        }, {
+            duration: 650,
+            easing: 'ease-in-out',
+            fill: 'both',
+            pseudoElement: '::view-transition-new(root)'
+        });
+    }).catch(() => { });
+
+    transition.finished.finally(() => root.style.removeProperty('--theme-origin'));
+});
 
 // Smooth scroll untuk navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -6,6 +62,10 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    if (this.matches('.nav-links a') && target.matches('main section[id]')) {
+                        navigationTargetId = target.id;
+                        updateScrollState();
+                    }
                     target.scrollIntoView({
                         behavior: prefersReducedMotion ? 'auto' : 'smooth',
                         block: 'start'
@@ -19,19 +79,34 @@
         const sections = Array.from(document.querySelectorAll('main section[id]'));
         const navLinks = document.querySelectorAll('.nav-links a');
         let scrollUpdatePending = false;
+        let navigationTargetId = null;
 
         const updateScrollState = () => {
             scrollUpdatePending = false;
             nav.classList.toggle('scrolled', window.scrollY > 50);
 
             let current = '';
-            sections.forEach(section => {
-                if (section.getBoundingClientRect().top <= 200) current = section.id;
-            });
+            if (navigationTargetId) {
+                const target = document.getElementById(navigationTargetId);
+                if (!target || Math.abs(target.getBoundingClientRect().top) <= 200) navigationTargetId = null;
+                else current = navigationTargetId;
+            }
+
+            if (!current) {
+                sections.forEach(section => {
+                    if (section.getBoundingClientRect().top <= 200) current = section.id;
+                });
+            }
 
             navLinks.forEach(link => {
                 link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
             });
+        };
+
+        const clearNavigationTarget = () => {
+            if (!navigationTargetId) return;
+            navigationTargetId = null;
+            updateScrollState();
         };
 
         window.addEventListener('scroll', () => {
@@ -40,6 +115,13 @@
             window.requestAnimationFrame(updateScrollState);
         }, { passive: true });
         window.addEventListener('resize', updateScrollState, { passive: true });
+        window.addEventListener('wheel', clearNavigationTarget, { passive: true });
+        window.addEventListener('touchstart', clearNavigationTarget, { passive: true });
+        window.addEventListener('keydown', event => {
+            if (['ArrowDown', 'ArrowUp', 'End', 'Home', 'PageDown', 'PageUp', ' '].includes(event.key)) {
+                clearNavigationTarget();
+            }
+        });
         updateScrollState();
 
         const revealTargets = document.querySelectorAll('.reveal, .blur-reveal');

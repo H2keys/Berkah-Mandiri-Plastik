@@ -9,6 +9,16 @@
     <meta name="keywords"
         content="jasa sablon custom, sablon cup plastik, cetak logo kemasan, sablon gelas plastik, sablon injection">
     <meta name="author" content="Berkah Mandiri Plastik">
+    <script>
+        (() => {
+            let theme = 'light';
+            try {
+                theme = localStorage.getItem('bmp-theme') ||
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            } catch { }
+            document.documentElement.dataset.theme = theme;
+        })();
+    </script>
     <title>Berkah Mandiri Plastik - Jasa Custom Sablon Kemasan</title>
     <link rel="canonical" href="https://berkah-mandiri-plastik-zeta.vercel.app/">
     <link rel="icon" type="image/webp" href="/static/img/logo.webp">
@@ -23,7 +33,7 @@
     <meta property="og:image" content="https://berkah-mandiri-plastik-zeta.vercel.app/static/img/logo.webp">
     <meta property="og:image:alt" content="Logo Berkah Mandiri Plastik">
     <meta name="twitter:card" content="summary">
-    <link rel="stylesheet" href="/static/css/styles.css?v=3">
+    <link rel="stylesheet" href="/static/css/styles.css?v=7">
 
 </head>
 
@@ -43,6 +53,15 @@
                 <li><a href="#sablon">Sablon Custom</a></li>
                 <li><a href="#kontak">Kontak</a></li>
             </ul>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Aktifkan mode gelap" aria-pressed="false" title="Aktifkan mode gelap">
+                <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M20.2 15.8A8.5 8.5 0 0 1 8.2 3.8 8.5 8.5 0 1 0 20.2 15.8Z" />
+                </svg>
+                <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                </svg>
+            </button>
         </div>
     </nav>
 
@@ -86,8 +105,8 @@
                     <a href="https://wa.me/082118145331?text=Halo,%20saya%20tertarik%20dengan%20Gelas%20Injection%2014%20OZ"
                         class="btn-apple">Pesan Sekarang</a>
                 </div>
-                <div class="apple-img-container">
-                    <img src="/static/img/gelas-injection-14oz.webp" alt="Gelas Injection 14 OZ" width="1024" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
+                <div class="apple-img-container" style="--product-image: url('/static/img/gelas-injection-14oz.jpg');">
+                    <img src="/static/img/gelas-injection-14oz.jpg" alt="Gelas Injection 14 OZ" width="763" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
                 </div>
             </div>
 
@@ -104,8 +123,8 @@
                     <a href="https://wa.me/082118145331?text=Halo,%20saya%20tertarik%20dengan%20Cup%20Sauce%2025%20ml"
                         class="btn-apple">Pesan Sekarang</a>
                 </div>
-                <div class="apple-img-container">
-                    <img src="/static/img/cup-sauce-25ml.webp" alt="Cup Sauce 25 ml" width="1024" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
+                <div class="apple-img-container" style="--product-image: url('/static/img/cup-sauce-25ml.jpg');">
+                    <img src="/static/img/cup-sauce-25ml.jpg" alt="Cup Sauce 25 ml" width="763" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
                 </div>
             </div>
 
@@ -122,8 +141,8 @@
                     <a href="https://wa.me/082118145331?text=Halo,%20saya%20tertarik%20dengan%20Cup%20Sauce%2035%20ml"
                         class="btn-apple">Pesan Sekarang</a>
                 </div>
-                <div class="apple-img-container">
-                    <img src="/static/img/cup-sauce-35ml.webp" alt="Cup Sauce 35 ml" width="1024" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
+                <div class="apple-img-container" style="--product-image: url('/static/img/cup-sauce-35ml.jpg');">
+                    <img src="/static/img/cup-sauce-35ml.jpg" alt="Cup Sauce 35 ml" width="765" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
                 </div>
             </div>
 
@@ -140,8 +159,8 @@
                     <a href="https://wa.me/082118145331?text=Halo,%20saya%20tertarik%20dengan%20Garpu%20Lipat%20Pop%20Mie"
                         class="btn-apple">Pesan Sekarang</a>
                 </div>
-                <div class="apple-img-container">
-                    <img src="/static/img/garpu-lipat-pop-mie.webp" alt="Garpu Lipat Pop Mie" width="1024" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
+                <div class="apple-img-container" style="--product-image: url('/static/img/garpu-lipat-pop-mie.jpg');">
+                    <img src="/static/img/garpu-lipat-pop-mie.jpg" alt="Garpu Lipat Pop Mie" width="762" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
                 </div>
             </div>
 
@@ -158,8 +177,8 @@
                     <a href="https://wa.me/082118145331?text=Halo,%20saya%20tertarik%20dengan%20Tutup%20Gelas%20Injection"
                         class="btn-apple">Pesan Sekarang</a>
                 </div>
-                <div class="apple-img-container">
-                    <img src="/static/img/tutup-gelas-injection-12-22oz.webp" alt="Tutup Gelas Injection 12-22 Oz" width="1024" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
+                <div class="apple-img-container" style="--product-image: url('/static/img/tutup-gelas-injection-12-22oz.jpg');">
+                    <img src="/static/img/tutup-gelas-injection-12-22oz.jpg" alt="Tutup Gelas Injection 12-22 Oz" width="765" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
                 </div>
             </div>
 
@@ -176,8 +195,8 @@
                     <a href="https://wa.me/082118145331?text=Halo,%20saya%20tertarik%20dengan%20Hanging%20HD%20Cup"
                         class="btn-apple">Pesan Sekarang</a>
                 </div>
-                <div class="apple-img-container">
-                    <img src="/static/img/hanging-hd-cup.webp" alt="Hanging HD Cup" width="1024" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
+                <div class="apple-img-container" style="--product-image: url('/static/img/hanging-hd-cup.jpg');">
+                    <img src="/static/img/hanging-hd-cup.jpg" alt="Hanging HD Cup" width="678" height="1024" loading="lazy" decoding="async" role="button" tabindex="0" aria-haspopup="dialog">
                 </div>
             </div>
 
@@ -233,7 +252,6 @@
                 <div class="showcase-track" data-carousel-track>
                     <article class="showcase-card reveal">
                         <div class="showcase-image-wrap">
-                            <span class="showcase-badge">Contoh 1 Warna</span>
                             <img src="/static/sablon-img/sablon-cup-16oz-1-warna.webp" alt="Contoh hasil sablon satu warna pada cup 16oz" class="showcase-image" width="1080" height="1920" loading="lazy" decoding="async">
                         </div>
                         <div class="showcase-card-body">
@@ -253,7 +271,6 @@
 
                     <article class="showcase-card reveal">
                         <div class="showcase-image-wrap">
-                            <span class="showcase-badge">Contoh 1-2 Warna</span>
                             <img src="/static/sablon-img/sablon-cup-injection-2-warna.webp" alt="Contoh hasil sablon satu sampai dua warna pada cup injection" class="showcase-image" width="675" height="1200" loading="lazy" decoding="async">
                         </div>
                         <div class="showcase-card-body">
@@ -273,7 +290,6 @@
 
                     <article class="showcase-card reveal">
                         <div class="showcase-image-wrap">
-                            <span class="showcase-badge">Contoh Premium</span>
                             <img src="/static/sablon-img/sablon-cup-pet-premium.webp" alt="Contoh hasil branding sablon pada cup PET premium" class="showcase-image" width="800" height="800" loading="lazy" decoding="async">
                         </div>
                         <div class="showcase-card-body">
@@ -293,7 +309,6 @@
 
                     <article class="showcase-card reveal">
                         <div class="showcase-image-wrap">
-                            <span class="showcase-badge">Contoh 4 Warna</span>
                             <img src="/static/sablon-img/sablon-cup-16oz-4-warna.webp" alt="Contoh hasil sablon empat warna pada cup 16oz" class="showcase-image" width="1200" height="1600" loading="lazy" decoding="async">
                         </div>
                         <div class="showcase-card-body">
@@ -359,6 +374,6 @@
         </div>
     </div>
 
-    <script src="/static/js/app.js?v=3" defer></script>
+    <script src="/static/js/app.js?v=6" defer></script>
 </body>
 </html>
