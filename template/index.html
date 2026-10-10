@@ -53,15 +53,30 @@
                 <li><a href="#sablon">Sablon Custom</a></li>
                 <li><a href="#kontak">Kontak</a></li>
             </ul>
-            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Aktifkan mode gelap" aria-pressed="false" title="Aktifkan mode gelap">
-                <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="M20.2 15.8A8.5 8.5 0 0 1 8.2 3.8 8.5 8.5 0 1 0 20.2 15.8Z" />
-                </svg>
-                <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="4" />
-                    <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
-                </svg>
-            </button>
+            <div class="nav-actions">
+                <button class="nav-menu-toggle" type="button" data-nav-toggle aria-controls="mobile-nav-panel" aria-expanded="false" aria-label="Buka menu navigasi">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Aktifkan mode gelap" aria-pressed="false" title="Aktifkan mode gelap">
+                    <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="M20.2 15.8A8.5 8.5 0 0 1 8.2 3.8 8.5 8.5 0 1 0 20.2 15.8Z" />
+                    </svg>
+                    <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-nav-panel" id="mobile-nav-panel" data-mobile-nav-panel aria-hidden="true">
+            <div class="mobile-nav-panel__inner">
+                <a href="#produk">Produk</a>
+                <a href="#keunggulan">Keunggulan Layanan</a>
+                <a href="#sablon">Sablon Custom</a>
+                <a href="#kontak">Kontak</a>
+            </div>
         </div>
     </nav>
 

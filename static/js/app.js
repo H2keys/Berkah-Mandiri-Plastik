@@ -1,7 +1,27 @@
 ﻿const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const themeToggle = document.querySelector('[data-theme-toggle]');
+const navMenuToggle = document.querySelector('[data-nav-toggle]');
+const mobileNavPanel = document.querySelector('[data-mobile-nav-panel]');
 const root = document.documentElement;
 let activeTheme = root.dataset.theme === 'dark' ? 'dark' : 'light';
+
+const closeMobileNav = () => {
+    if (!navMenuToggle || !mobileNavPanel) return;
+    navMenuToggle.classList.remove('is-open');
+    navMenuToggle.setAttribute('aria-expanded', 'false');
+    mobileNavPanel.classList.remove('is-open');
+    mobileNavPanel.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('nav-open');
+};
+
+const toggleMobileNav = () => {
+    if (!navMenuToggle || !mobileNavPanel) return;
+    const isOpen = navMenuToggle.classList.toggle('is-open');
+    navMenuToggle.setAttribute('aria-expanded', String(isOpen));
+    mobileNavPanel.classList.toggle('is-open', isOpen);
+    mobileNavPanel.setAttribute('aria-hidden', String(!isOpen));
+    document.body.classList.toggle('nav-open', isOpen);
+};
 
 const syncThemeToggle = () => {
     const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
@@ -21,6 +41,23 @@ const applyTheme = theme => {
 };
 
 syncThemeToggle();
+
+if (navMenuToggle && mobileNavPanel) {
+    navMenuToggle.addEventListener('click', toggleMobileNav);
+    mobileNavPanel.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileNav);
+    });
+    document.addEventListener('click', event => {
+        const clickedWithinNav = navMenuToggle.contains(event.target) || mobileNavPanel.contains(event.target);
+        if (!clickedWithinNav) closeMobileNav();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMobileNav();
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) closeMobileNav();
+    }, { passive: true });
+}
 
 themeToggle.addEventListener('click', () => {
     const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
